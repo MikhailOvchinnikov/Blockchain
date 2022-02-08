@@ -1,24 +1,6 @@
-Feb 08, 2022 9:42:08 PM services.SendingConfirmationServiceImpl sendForConfirmationToOrganization
+Feb 09, 2022 12:26:43 AM services.SendingConfirmationServiceImpl sendForConfirmationToOrganization
 INFO: Send for confirmation to Org1 finished with response false
-Feb 08, 2022 9:42:08 PM services.SendingConfirmationServiceImpl sendForConfirmationToOrganization
+Feb 09, 2022 12:26:43 AM services.SendingConfirmationServiceImpl sendForConfirmationToOrganization
 INFO: Send for confirmation to Org2 finished with response true
-Feb 08, 2022 9:42:08 PM services.SendingConfirmationServiceImpl sendForConfirmationToOrganization
-INFO: Send for confirmation to Org3 finished with response true
-Feb 08, 2022 9:42:08 PM services.SendingConfirmationServiceImpl sendForConfirmationToOrganization
-INFO: Consensus is reached with 3 messages
-Feb 08, 2022 9:42:08 PM services.SendingConfirmationServiceImpl sendForConfirmationToOrganization
-INFO: Send for confirmation to Org1 finished with response false
-Feb 08, 2022 9:42:08 PM services.SendingConfirmationServiceImpl sendForConfirmationToOrganization
-INFO: Send for confirmation to Org2 finished with response true
-Feb 08, 2022 9:42:08 PM services.SendingConfirmationServiceImpl sendForConfirmationToOrganization
-INFO: Send for confirmation to Org3 finished with response true
-Feb 08, 2022 9:42:08 PM services.SendingConfirmationServiceImpl sendForConfirmationToOrganization
-INFO: Consensus is reached with 3 messages
-Feb 08, 2022 9:42:08 PM services.SendingConfirmationServiceImpl sendForConfirmationToOrganization
-INFO: Send for confirmation to Org1 finished with response false
-Feb 08, 2022 9:42:08 PM services.SendingConfirmationServiceImpl sendForConfirmationToOrganization
-INFO: Send for confirmation to Org2 finished with response true
-Feb 08, 2022 9:42:08 PM services.SendingConfirmationServiceImpl sendForConfirmationToOrganization
+Feb 09, 2022 12:26:43 AM services.SendingConfirmationServiceImpl sendForConfirmationToOrganization
 INFO: Send for confirmation to Org3 finished with response false
-Feb 08, 2022 9:42:08 PM services.SendingConfirmationServiceImpl sendForConfirmationToOrganization
-INFO: Consensus is reached with 3 messages

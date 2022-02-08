@@ -6,6 +6,8 @@ import services.SendingConfirmationServiceImpl;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class SendingConfirmationServiceImplTest {
 
     static SendingConfirmationService confirmationService;
@@ -21,23 +23,38 @@ public class SendingConfirmationServiceImplTest {
     }
 
     @Test
-    public void sendCustomTest() {
-        confirmationService.sendForConfirmationCustomValues(new SenderServiceImpl(),
+    public void sendCustomIdTest() {
+        boolean consensusReached = confirmationService.sendForConfirmationCustomId(new SenderServiceImpl(),
+                "src/test/resources/results_backwards.json",
+                0);
+
+        assertTrue(consensusReached);
+    }
+
+    @Test
+    public void sendCustomValuesTest() {
+        boolean consensusReached = confirmationService.sendForConfirmationCustomValues(new SenderServiceImpl(),
                 "src/test/resources/results_backwards.json",
                 1.0,
                 3.0919090686339907);
+
+        assertTrue(consensusReached);
     }
 
     @Test
     public void sendMinMessagesTest() {
-        confirmationService.sendForConfirmationMinMessages(new SenderServiceImpl(),
+        boolean consensusReached = confirmationService.sendForConfirmationMinMessages(new SenderServiceImpl(),
                 "src/test/resources/results_backwards.json");
+
+        assertTrue(consensusReached);
     }
 
     @Test
     public void sendMaxProbabilityTest() {
-        confirmationService.sendForConfirmationMaxProbability(new SenderServiceImpl(),
+        boolean consensusReached = confirmationService.sendForConfirmationMaxProbability(new SenderServiceImpl(),
                 "src/test/resources/results_backwards.json");
+
+        assertTrue(consensusReached);
     }
 
     static class SenderServiceImpl implements SenderService {

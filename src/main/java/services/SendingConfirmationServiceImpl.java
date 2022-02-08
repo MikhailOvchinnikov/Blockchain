@@ -143,7 +143,7 @@ public class SendingConfirmationServiceImpl implements SendingConfirmationServic
                                                       int[] responses, int responseIndex, int messagesCnt,
                                                       Set<int[]> spec, Set<int[]> backwards,
                                                       Map<String, Integer> numberOfRequestsPerOrganization) {
-        String orgToSend = organizations.get(responseIndex);
+        String orgToSend = organizations.get(0);
 
         int requestsNumToOrg = numberOfRequestsPerOrganization.get(orgToSend);
 
@@ -172,24 +172,22 @@ public class SendingConfirmationServiceImpl implements SendingConfirmationServic
         } else if (messagesCnt == senderService.getMaxRequestTotalNum()) {
             logger.warning("Max number of messages was sent. Consensus is not reached.");
             return false;
-        }
-        if (backwardsOpt.isPresent()) {
+        } else if (backwardsOpt.isPresent() && reply != 1) {
             int[] initialResponses = IntStream.generate(() -> -1)
                     .limit(cashedOrganizations.size())
                     .toArray();
 
             logger.info(String.format("Make backward transition from organization %s", orgToSend));
 
-            sendForConfirmationToOrganization(senderService, this.cashedOrganizations, initialResponses, 0,
+            return sendForConfirmationToOrganization(senderService, this.cashedOrganizations, initialResponses, 0,
                     messagesCnt + 1, spec, backwards, numberOfRequestsPerOrganization);
         } else if (IntStream.of(responses).noneMatch(x -> x == -1)) {
+            // reached the end of the tree
             return false;
         } else {
-            sendForConfirmationToOrganization(senderService, organizations, responses, responseIndex + 1,
+            organizations.remove(orgToSend);
+            return sendForConfirmationToOrganization(senderService, organizations, responses, responseIndex + 1,
                     messagesCnt + 1, spec, backwards, numberOfRequestsPerOrganization);
         }
-
-        // should never happen
-        return false;
     }
 }
