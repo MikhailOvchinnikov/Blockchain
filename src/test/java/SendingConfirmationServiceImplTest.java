@@ -25,7 +25,7 @@ public class SendingConfirmationServiceImplTest {
     @Test
     public void sendCustomIdTest() {
         boolean consensusReached = confirmationService.sendForConfirmationCustomId(new SenderServiceImpl(),
-                "src/test/resources/results_backwards.json",
+                "src/test/resources/results.json",
                 0);
 
         assertTrue(consensusReached);
@@ -34,9 +34,9 @@ public class SendingConfirmationServiceImplTest {
     @Test
     public void sendCustomValuesTest() {
         boolean consensusReached = confirmationService.sendForConfirmationCustomValues(new SenderServiceImpl(),
-                "src/test/resources/results_backwards.json",
-                1.0,
-                3.0919090686339907);
+                "src/test/resources/results.json",
+                0.9975136,
+                4.0);
 
         assertTrue(consensusReached);
     }
@@ -44,7 +44,7 @@ public class SendingConfirmationServiceImplTest {
     @Test
     public void sendMinMessagesTest() {
         boolean consensusReached = confirmationService.sendForConfirmationMinMessages(new SenderServiceImpl(),
-                "src/test/resources/results_backwards.json");
+                "src/test/resources/results.json");
 
         assertTrue(consensusReached);
     }
@@ -52,7 +52,7 @@ public class SendingConfirmationServiceImplTest {
     @Test
     public void sendMaxProbabilityTest() {
         boolean consensusReached = confirmationService.sendForConfirmationMaxProbability(new SenderServiceImpl(),
-                "src/test/resources/results_backwards.json");
+                "src/test/resources/results.json");
 
         assertTrue(consensusReached);
     }
@@ -61,7 +61,26 @@ public class SendingConfirmationServiceImplTest {
         @Override
         public int getReply(String orgName, int transactionId) {
             // random either accepts or rejects a transaction
-            return ThreadLocalRandom.current().nextInt(0, 2);
+            int randomNum = ThreadLocalRandom.current().nextInt(0, 100);
+            double org_pr = 0;
+            switch (orgName) {
+                case "Org1":
+                    org_pr = 0.96;
+                    break;
+                case "Org2":
+                    org_pr = 0.95;
+                    break;
+                case "Org3":
+                    org_pr = 0.97;
+                    break;
+                case "Org4":
+                    org_pr = 0.94;
+                    break;
+            }
+            if (randomNum < org_pr*100) {
+                return 1;
+            }
+            return 0;
         }
 
         @Override

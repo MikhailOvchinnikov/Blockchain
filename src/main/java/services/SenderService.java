@@ -1,4 +1,5 @@
 package services;
+import java.util.concurrent.ThreadLocalRandom;
 
 public interface SenderService {
 
