@@ -1,0 +1,29 @@
+Organizations:
+  -
+    Name: Org1
+
+    # Probability to accept next transaction. based on the historical data
+    Pr: 0.96
+
+  -
+    Name: Org2
+
+    # Probability to accept next transaction. based on the historical data
+    Pr: 0.95
+
+  -
+    Name: Org3
+
+    # Probability to accept next transaction. based on the historical data
+    Pr: 0.97
+
+  -
+    Name: Org4
+
+    # Probability to accept next transaction. based on the historical data
+    Pr: 0.94
+
+Policies:
+  Endorsement:
+    Type: Signature
+    Rule: "(Org1 & (Org2 | Org3)) | Org4"
